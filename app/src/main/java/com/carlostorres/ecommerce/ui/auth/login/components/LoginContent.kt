@@ -1,9 +1,5 @@
-package com.carlostorres.ecommerce
+package com.carlostorres.ecommerce.ui.auth.login.components
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -17,19 +13,18 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowForward
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
-import androidx.compose.material.icons.rounded.Email
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -40,25 +35,15 @@ import androidx.compose.ui.graphics.ColorMatrix
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.carlostorres.ecommerce.R
+import com.carlostorres.ecommerce.ui.components.DefaultButton
+import com.carlostorres.ecommerce.ui.components.DefaultTextField
 import com.carlostorres.ecommerce.ui.theme.Blue500
 import com.carlostorres.ecommerce.ui.theme.Blue700
-import com.carlostorres.ecommerce.ui.theme.ECommerceTheme
-
-class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            ECommerceTheme {
-                Surface(modifier = Modifier.fillMaxSize()) {
-                    LoginContent()
-                }
-            }
-        }
-    }
-}
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
@@ -116,7 +101,7 @@ fun LoginContent() {
                     bottomEnd = 0.dp
                 ),
                 colors = CardDefaults.cardColors(
-                    containerColor = Color.White
+                    containerColor = Color.White.copy(alpha = 0.7f)
                 )
             ) {
 
@@ -136,68 +121,36 @@ fun LoginContent() {
                         color = Color.Black
                     )
 
-                    OutlinedTextField(
+                    DefaultTextField(
                         modifier = Modifier
                             .fillMaxWidth(),
                         value = "",
                         onValueChange = {},
-                        label = {
-                            Text(text = "Correo Electrónico")
-                        },
-                        leadingIcon = {
-                            Icon(
-                                imageVector = Icons.Filled.Email,
-                                contentDescription = "",
-                                tint = Blue500
-                            )
-                        },
-                        colors = TextFieldDefaults.colors(
-                            focusedTextColor = Color.Black,
-                            unfocusedTextColor = Color.Black,
-                            focusedContainerColor = Color.White,
-                            unfocusedContainerColor = Color.White,
-                        )
+                        labelText = "Correo Electrónico",
+                        icon = Icons.Filled.Email,
+                        keyboardType = KeyboardType.Email
                     )
 
-                    OutlinedTextField(
+                    DefaultTextField(
                         modifier = Modifier
                             .fillMaxWidth(),
                         value = "",
                         onValueChange = {},
-                        label = {
-                            Text(text = "Contraseña")
-                        },
-                        leadingIcon = {
-                            Icon(
-                                imageVector = Icons.Filled.Lock,
-                                contentDescription = "",
-                                tint = Blue500
-                            )
-                        },
-                        colors = TextFieldDefaults.colors(
-                            focusedTextColor = Color.Black,
-                            unfocusedTextColor = Color.Black,
-                            focusedContainerColor = Color.White,
-                            unfocusedContainerColor = Color.White,
-                        )
+                        labelText = "Contraseña",
+                        icon = Icons.Filled.Lock,
+                        keyboardType = KeyboardType.Password
                     )
 
                     Spacer(modifier = Modifier.height(20.dp))
 
-                    Button(
-                        modifier = Modifier
-                            .fillMaxWidth(),
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = Blue500,
-                            contentColor = Color.White
-                        ),
-                        shape = RoundedCornerShape(5.dp),
-                        elevation = ButtonDefaults.buttonElevation(
-                        ),
-                        onClick = {  }
-                    ) {
-                        Text(text = "Iniciar Sesion")
-                    }
+                    DefaultButton(
+                        modifier = Modifier.fillMaxWidth(),
+                        buttonText = "Iniciar Sesion",
+                        icon = Icons.AutoMirrored.Filled.ArrowForward,
+                        onClick = {
+
+                        }
+                    )
 
                     Row(
                         modifier = Modifier
@@ -205,7 +158,7 @@ fun LoginContent() {
                     ) {
                         Text(text = "No tienes cuenta?")
                         Spacer(modifier = Modifier.width(10.dp))
-                        Text(text = "Registrate", color = Blue700)
+                        Text(text = "Registrate", color = Blue700, fontWeight = FontWeight.Bold)
                     }
 
                 }
