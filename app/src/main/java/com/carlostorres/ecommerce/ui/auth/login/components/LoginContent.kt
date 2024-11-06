@@ -1,5 +1,8 @@
 package com.carlostorres.ecommerce.ui.auth.login.components
 
+import android.widget.Toast
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -22,28 +25,37 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.ColorMatrix
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.carlostorres.ecommerce.R
+import com.carlostorres.ecommerce.presentation.auth.login.LoginEvents
+import com.carlostorres.ecommerce.presentation.auth.login.LoginState
 import com.carlostorres.ecommerce.ui.components.DefaultButton
 import com.carlostorres.ecommerce.ui.components.DefaultTextField
+import com.carlostorres.ecommerce.ui.components.PasswordTextField
 import com.carlostorres.ecommerce.ui.theme.Blue700
 
 @Composable
 fun LoginContent(
     paddingValues: PaddingValues,
+    state: LoginState,
+    onEvent: (LoginEvents) -> Unit,
     navigateToRegister: () -> Unit
 ) {
+
+    val context = LocalContext.current
 
     Box(
         modifier = Modifier
@@ -121,31 +133,48 @@ fun LoginContent(
                     DefaultTextField(
                         modifier = Modifier
                             .fillMaxWidth(),
-                        value = "",
-                        onValueChange = {},
+                        value = state.email,
+                        onValueChange = {
+                            onEvent(LoginEvents.OnEmailChange(it))
+                        },
                         labelText = "Correo Electrónico",
                         icon = Icons.Filled.Email,
                         keyboardType = KeyboardType.Email
                     )
 
-                    DefaultTextField(
+                    PasswordTextField(
                         modifier = Modifier
                             .fillMaxWidth(),
-                        value = "",
-                        onValueChange = {},
+                        value = state.password,
+                        onValueChange = {
+                            onEvent(LoginEvents.OnPasswordChange(it))
+                        },
                         labelText = "Contraseña",
                         icon = Icons.Filled.Lock,
                         keyboardType = KeyboardType.Password
                     )
 
-                    Spacer(modifier = Modifier.height(20.dp))
+                    Spacer(modifier = Modifier.height(10.dp))
+
+                    AnimatedVisibility(visible = state.formErrorMsg != null) {
+                        Text(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .animateContentSize(),
+                            text = state.formErrorMsg ?: "",
+                            color = Color.Red,
+                            textAlign = TextAlign.Center
+                        )
+                    }
+
+                    Spacer(modifier = Modifier.height(10.dp))
 
                     DefaultButton(
                         modifier = Modifier.fillMaxWidth(),
                         buttonText = "Iniciar Sesion",
                         icon = Icons.AutoMirrored.Filled.ArrowForward,
                         onClick = {
-
+                            onEvent(LoginEvents.ValidateForm)
                         }
                     )
 

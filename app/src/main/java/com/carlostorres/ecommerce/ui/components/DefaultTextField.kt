@@ -1,12 +1,10 @@
 package com.carlostorres.ecommerce.ui.components
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.LocalSee
-import androidx.compose.material.icons.rounded.PanoramaFishEye
 import androidx.compose.material.icons.rounded.Password
 import androidx.compose.material.icons.rounded.RemoveRedEye
 import androidx.compose.material3.Icon
@@ -112,28 +110,6 @@ fun DefaultTextField(
                 }
             }
         },
-        visualTransformation = if (hidePassword) PasswordVisualTransformation() else VisualTransformation.None
+        visualTransformation = if (isPassword && hidePassword) PasswordVisualTransformation() else VisualTransformation.None
     )
-
-}
-
-@Preview(showBackground = true)
-@Composable
-private fun PTFP() {
-
-    Column {
-        PasswordTextField(
-            value = "",
-            onValueChange = {},
-            labelText = "Pass",
-            icon = Icons.Rounded.LocalSee
-        )
-
-        DefaultTextField(
-            value = "",
-            onValueChange = {},
-            labelText = "Pass",
-            icon = Icons.Rounded.LocalSee
-        )
-    }
 }

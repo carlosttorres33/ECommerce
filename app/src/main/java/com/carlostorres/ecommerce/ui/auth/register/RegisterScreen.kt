@@ -15,16 +15,20 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.carlostorres.ecommerce.presentation.auth.register.RegisterViewModel
 import com.carlostorres.ecommerce.ui.auth.register.components.RegisterContent
 import com.carlostorres.ecommerce.ui.components.DefaultTopBar
 import com.carlostorres.ecommerce.ui.theme.Blue500
 
 @Preview(showSystemUi = true)
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun RegisterScreen(
+    viewModel: RegisterViewModel = hiltViewModel(),
     onBackClick: () -> Unit = {}
 ) {
+
+    val state = viewModel.state
 
     Scaffold(
         topBar = {
@@ -36,7 +40,13 @@ fun RegisterScreen(
         }
     ) {
 
-        RegisterContent(paddingValues = it)
+        RegisterContent(
+            paddingValues = it,
+            state = state,
+            onEvent = { event ->
+                viewModel.onEvent(event)
+            },
+        )
 
     }
 
