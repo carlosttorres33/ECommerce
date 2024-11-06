@@ -6,12 +6,15 @@ import com.carlostorres.ecommerce.ui.auth.login.components.LoginContent
 
 @Composable
 fun LoginScreen(
-
+    navigateToRegister: () -> Unit
 ) {
 
-    Scaffold {
+    Scaffold { paddingValues ->
 
-        LoginContent()
+        LoginContent(
+            paddingValues = paddingValues,
+            navigateToRegister = { navigateToRegister() }
+        )
 
     }
 

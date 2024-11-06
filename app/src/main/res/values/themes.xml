@@ -3,5 +3,7 @@
 
     <style name="Theme.ECommerce" parent="android:Theme.Material.Light.NoActionBar">
         <item name="android:statusBarColor">@color/blue_700</item>
+        <item name="android:navigationBarColor">@color/blue_700</item>
     </style>
+
 </resources>

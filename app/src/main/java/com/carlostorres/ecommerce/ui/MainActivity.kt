@@ -41,6 +41,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.carlostorres.ecommerce.R
 import com.carlostorres.ecommerce.ui.auth.login.LoginScreen
+import com.carlostorres.ecommerce.ui.navigation.graph.RootNavGraph
 import com.carlostorres.ecommerce.ui.theme.Blue500
 import com.carlostorres.ecommerce.ui.theme.Blue700
 import com.carlostorres.ecommerce.ui.theme.ECommerceTheme
@@ -51,7 +52,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             ECommerceTheme {
                 Surface(modifier = Modifier.fillMaxSize()) {
-                    LoginScreen()
+                    RootNavGraph()
                 }
             }
         }
