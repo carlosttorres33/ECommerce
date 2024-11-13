@@ -1,4 +1,4 @@
-package com.carlostorres.ecommerce.ui.auth.register
+package com.carlostorres.ecommerce.auth.ui.register
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -16,8 +16,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.carlostorres.ecommerce.presentation.auth.register.RegisterViewModel
-import com.carlostorres.ecommerce.ui.auth.register.components.RegisterContent
+import com.carlostorres.ecommerce.auth.presentation.register.RegisterViewModel
+import com.carlostorres.ecommerce.auth.ui.register.components.RegisterContent
 import com.carlostorres.ecommerce.ui.components.DefaultTopBar
 import com.carlostorres.ecommerce.ui.theme.Blue500
 

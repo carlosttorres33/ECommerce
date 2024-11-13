@@ -4,8 +4,8 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
-import com.carlostorres.ecommerce.ui.auth.login.LoginScreen
-import com.carlostorres.ecommerce.ui.auth.register.RegisterScreen
+import com.carlostorres.ecommerce.auth.ui.login.LoginScreen
+import com.carlostorres.ecommerce.auth.ui.register.RegisterScreen
 import com.carlostorres.ecommerce.ui.navigation.Graph
 import com.carlostorres.ecommerce.ui.navigation.screens.AuthenticationScreens
 

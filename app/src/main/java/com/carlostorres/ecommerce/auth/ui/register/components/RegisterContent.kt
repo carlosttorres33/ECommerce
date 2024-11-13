@@ -1,4 +1,4 @@
-package com.carlostorres.ecommerce.ui.auth.register.components
+package com.carlostorres.ecommerce.auth.ui.register.components
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateContentSize
@@ -39,8 +39,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.carlostorres.ecommerce.R
-import com.carlostorres.ecommerce.presentation.auth.register.RegisterEvents
-import com.carlostorres.ecommerce.presentation.auth.register.RegisterState
+import com.carlostorres.ecommerce.auth.presentation.register.RegisterEvents
+import com.carlostorres.ecommerce.auth.presentation.register.RegisterState
 import com.carlostorres.ecommerce.ui.components.DefaultButton
 import com.carlostorres.ecommerce.ui.components.DefaultTextField
 import com.carlostorres.ecommerce.ui.components.PasswordTextField

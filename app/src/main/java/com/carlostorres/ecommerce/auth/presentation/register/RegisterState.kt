@@ -1,4 +1,4 @@
-package com.carlostorres.ecommerce.presentation.auth.register
+package com.carlostorres.ecommerce.auth.presentation.register
 
 data class RegisterState(
     val name: String = "",
